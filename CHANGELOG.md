@@ -47,6 +47,11 @@ bottom of the file for a change log entry template.
 * Documentation, change log, contribution guide, license, README, and .gitignore
 * Directories and READMEs for C and Python examples and implementations, images
 
+## <a name="0.0.1"></a> Template
+
+### Added
+* Added OPCODE to put mcu in sleep mode
+
 ## <a name="template"></a> Template
 
 ### Added

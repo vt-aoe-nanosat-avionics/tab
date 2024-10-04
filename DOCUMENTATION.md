@@ -16,6 +16,7 @@ If you are interested in using and understanding TAB, refer to this document.
   * [Bootloader Write Page](#bootloader-write-page)
   * [Bootloader Write Page Addr32](#bootloader-write-page-addr32)
   * [Bootloader Jump](#bootloader-jump)
+  * [Bootloader Power](#bootloader-power)
 * [Protocol](#protocol): TAB protocol
 * [License](#license)
 
@@ -300,6 +301,43 @@ application.
 **Payload**
 
 No payload
+
+### <a name="bootloader-power"></a> Bootloader Power
+
+This command instructs the bootloader to 
+* Name: `bootloader_power`
+* Required parameters: Power Mode
+* Reply:
+  * If the bootloader is active and successfully changes power mode:
+    `bootloader_ack`
+  * If the bootloader is active and fails to change power mode:
+    `bootloader_nack`
+
+**Header**
+
+| Start Byte 0 | Start Byte 1 | Remaining Bytes | HW ID LSByte | HW ID MSByte | MSG ID LSByte | MSG ID MSByte | Route Nibbles | Opcode |
+| ------------ | ------------ | --------------- | ------------ | ------------ | ------------- | ------------- | ------------- | ------ |
+| 0x22         | 0x69         | 0x07            | 0xHH         | 0xHH         | 0xHH          | 0xHH          | 0xSD          | 0x0d   |
+
+**Payload**
+
+| Power Bytes (Required) |
+| ---------------------- |
+| 0xHH                   |
+
+Power bytes:
+
+| Power Mode      | Byte |
+| --------------- | ---- |
+| Run             | 0x00 |
+| Sleep           | 0x01 |
+| Low-power run   | 0x02 |
+| Low-power sleep | 0x03 |
+| Stop 0          | 0x04 |
+| Stop 1          | 0x05 |
+| Stop 2          | 0x06 |
+| Standy          | 0x07 |
+| Shutdown        | 0x08 |
 
 ## <a name="protocol"></a> Protocol
 
