@@ -92,7 +92,7 @@ time.sleep(1.0)
 
 # 3. Test Common Debug
 cmd = TxCmd(COMMON_DEBUG_OPCODE, HWID, msgid, GND, CDH)
-cmd.common_debug('Hello, world!')
+cmd.common_debug(opts)
 byte_i = 0
 while rx_cmd_buff.state != RxCmdBuffState.COMPLETE:
   if byte_i < cmd.get_byte_count():

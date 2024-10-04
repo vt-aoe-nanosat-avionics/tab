@@ -304,7 +304,7 @@ No payload
 
 ### <a name="bootloader-power"></a> Bootloader Power
 
-This command instructs the bootloader to 
+This command instructs the bootloader to change the power mode it is operating in
 * Name: `bootloader_power`
 * Required parameters: Power Mode
 * Reply:
@@ -312,6 +312,10 @@ This command instructs the bootloader to
     `bootloader_ack`
   * If the bootloader is active and fails to change power mode:
     `bootloader_nack`
+  * If an invalid power transition is requested:
+    `bootloader_nack`
+  * Valid mode transitions:
+    ![state transition diagram!](./images/state_transition_diagram.png)
 
 **Header**
 
@@ -338,6 +342,8 @@ Power bytes:
 | Stop 2          | 0x06 |
 | Standy          | 0x07 |
 | Shutdown        | 0x08 |
+
+
 
 ## <a name="protocol"></a> Protocol
 
